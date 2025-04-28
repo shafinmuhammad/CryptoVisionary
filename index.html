@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crypto & Currency Converter</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #121212 url('/static/Abstract-cryptocurrency-with-gold-bitcoin-background.webp') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff; /* White text */
+    }
+    .container {
+      margin-top: 80px;
+      max-width: 750px;
+      background-color: rgba(26, 26, 26, 0.9); /* Dark gray background with transparency */
+      border-radius: 25px;
+      padding: 50px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+    .btn-custom {
+      background-color: #ffffff; /* White background for button */
+      color: #121212; /* Black text */
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #f1f1f1; /* Light gray on hover */
+      transform: scale(1.02);
+    }
+    select, input {
+      height: 55px;
+      font-size: 16px;
+      background-color: #333333; /* Dark input background */
+      color: #ffffff; /* White text */
+      border: 1px solid #ffffff; /* White border */
+    }
+    select:focus, input:focus {
+      border-color: #f1f1f1; /* Light gray focus border */
+    }
+    label {
+      color: #ffffff; /* White labels */
+    }
+    /* Style for the chart container */
+    #tradingview-widget {
+      margin-top: 30px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+  </style>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+    new TradingView.widget({
+      "width": "100%",
+      "height": 500,
+      "symbol": "CRYPTOCAP:TOTAL",
+      "interval": "D",
+      "timezone": "Etc/UTC",
+      "theme": "dark",
+      "style": "1",
+      "locale": "en",
+      "toolbar_bg": "#1a1a1a",
+      "enable_publishing": false,
+      "allow_symbol_change": true,
+      "container_id": "tradingview-widget"
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center mb-4" style="color: #ffffff;">💱 Crypto & Currency Converter</h2>
+    <form method="POST" action="/convert">
+      <div class="form-floating mb-4">
+        <input type="number" step="0.01" name="amount" class="form-control" placeholder="Amount" required>
+        <label>Amount</label>
+      </div>
+      <div class="row mb-4">
+        <div class="col form-floating">
+          <select class="form-select" name="from_currency">
+            {% for currency in all_currencies %}
+              <option value="{{ currency }}">{{ currency.upper() }}</option>
+            {% endfor %}
+          </select>
+          <label>From Currency</label>
+        </div>
+        <div class="col form-floating">
+          <select class="form-select" name="to_currency">
+            {% for currency in fiat_list %}
+              <option value="{{ currency }}">{{ currency.upper() }}</option>
+            {% endfor %}
+          </select>
+          <label>To Currency</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-custom w-100 fs-5 py-2">🔄 Convert</button>
+    </form>
+    <!-- TradingView Chart Widget -->
+    <div id="tradingview-widget"></div>
+  </div>
+</body>
+</html>
