@@ -62,22 +62,10 @@ python app.py
 http://127.0.0.1:5000/
 ```
 
----
-
-## 🌐 Live Demo
-
-Coming soon! ✨ (Stay tuned!)
-
----
-
-## 🔍 Screenshots
-
-| Home Page | Conversion Result |
-|-----------|-------------------|
-| ![Home](screenshots/home.png) | ![Result](screenshots/result.png) |
-
-*(Add your own screenshots in the `/screenshots` folder!)*
-
+## 🔍 Screenshots<p float="left">
+  <img src="screenshots/home.png" width="45%" />
+  <img src="screenshots/result.png" width="45%" />
+</p>
 ---
 
 ## 📊 Project Structure
