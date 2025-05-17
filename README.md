@@ -62,12 +62,6 @@ python app.py
 http://127.0.0.1:5000/
 ```
 
-## 🔍 Screenshots<p float="left">
-  <img src="screenshots/home.png" width="45%" />
-  <img src="screenshots/result.png" width="45%" />
-</p>
----
-
 ## 📊 Project Structure
 
 ```bash
